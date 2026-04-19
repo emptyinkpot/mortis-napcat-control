@@ -32,6 +32,26 @@ The current production target is the NapCat deployment on `124.220.233.126`.
 - keep the public repo sanitized
 - keep real NapCat WebUI token, ssh keys, and live account credentials off-repo
 - keep the Mortis-triggerable send path limited to approved group targets
+- keep the wrapper interface constrained to:
+  - fixed group `689863409`
+  - whitelisted template keys: `notify`, `status`, `alert`
+  - whitelisted source tags: `mortis-ai`, `mortis-watch`, `mortis-ops`
+  - fixed visible prefixes generated on the remote helper, not supplied by callers
+
+## Message Contract
+
+- wrapper entrypoint:
+  - `backend/send-mortis-group.ps1 -Body <text> -TemplateKey <notify|status|alert> -SourceTag <mortis-ai|mortis-watch|mortis-ops>`
+- rendered outbound message shape:
+
+```text
+[Mortis AI][通知]
+来源标识：mortis-ai
+<body>
+```
+
+- callers can only control the body text plus the whitelisted template/source selectors
+- callers cannot override the group id or inject an arbitrary message prefix
 
 ## Current Verified State
 

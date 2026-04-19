@@ -36,5 +36,7 @@ sudo certbot --nginx -d napcat.tengokukk.com
 
 ```powershell
 E:\My Project\Atramenti-Console\codex\apps\mortis-napcat-control\backend\send-mortis-group.ps1 `
-  -Message "Mortis NapCat deploy verification"
+  -Body "Mortis NapCat deploy verification" `
+  -TemplateKey notify `
+  -SourceTag mortis-ops
 ```

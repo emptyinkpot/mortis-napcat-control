@@ -1,8 +1,8 @@
 {
   "id": "mortis-napcat-control",
   "displayName": "Mortis NapCat Control",
-  "version": "0.1.0",
-  "summary": "Whitelisted NapCat group control for Mortis, plus deployable reverse-proxy and public repo templates.",
+  "version": "0.2.0",
+  "summary": "Template and source whitelisted NapCat group control for Mortis, plus deployable reverse-proxy and public repo templates.",
   "entrypoints": {
     "frontend": "frontend/",
     "backend": "backend/",

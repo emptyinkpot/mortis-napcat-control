@@ -1,0 +1,41 @@
+# Mortis NapCat Control
+
+This app is the minimal shared source for three linked jobs:
+
+- let Mortis / multica trigger a constrained NapCat send path
+- expose NapCat WebUI behind a proper HTTPS domain and reverse proxy
+- publish a sanitized public code snapshot for later customization
+
+The current production target is the NapCat deployment on `124.220.233.126`.
+
+## Layout
+
+- `backend/send-mortis-group.ps1`
+  - local wrapper for Mortis / Codex runtime on NEVERLETMEGO
+- `backend/remote/send_napcat_group.py`
+  - remote helper that calls the existing host `notify.py`
+- `backend/host-control/`
+  - sanitized snapshot of the live host control files (`notify.py`, env example, operator README)
+- `backend/napcat/docker-compose.yml`
+  - the current NapCat container shape used on `124`
+- `backend/nginx/napcat.tengokukk.com.conf`
+  - nginx template for the HTTPS reverse proxy
+- `backend/nginx/napcat.tengokukk.com.live.conf`
+  - the live nginx config after certbot deployment
+- `docs/MORTIS_AGENT_SETUP.md`
+  - exact agent / issue wiring notes
+- `docs/DEPLOY.md`
+  - deploy and verification flow
+
+## Safety Model
+
+- keep the public repo sanitized
+- keep real NapCat WebUI token, ssh keys, and live account credentials off-repo
+- keep the Mortis-triggerable send path limited to approved group targets
+
+## Current Verified State
+
+- default host notify target is now group `689863409`
+- live HTTPS WebUI route is `https://napcat.tengokukk.com/webui/network`
+- Mortis now has a dedicated workspace agent name reserved for this path:
+  - `NapCat Group Operator`

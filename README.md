@@ -13,7 +13,7 @@ The current production target is the NapCat deployment on `124.220.233.126`.
 - `backend/send-mortis-group.ps1`
   - local wrapper for Mortis / Codex runtime on NEVERLETMEGO
 - `backend/remote/send_napcat_group.py`
-  - remote helper that calls the existing host `notify.py`
+  - remote helper that reuses the host `notify.py` auth/logging functions while rendering its own fixed-prefix message body
 - `backend/host-control/`
   - sanitized snapshot of the live host control files (`notify.py`, env example, operator README)
 - `backend/napcat/docker-compose.yml`
